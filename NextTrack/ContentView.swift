@@ -12,7 +12,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button () {
-                withAnimation(Animation.interpolatingSpring(Spring(duration: 0.4))) {
+                withAnimation(Animation.interpolatingSpring(Spring(duration: 0.4, bounce: 0.3))) {
                     isClicked = false
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
@@ -27,13 +27,12 @@ struct ContentView: View {
                         .foregroundStyle(.blue.opacity( isClicked ? 0 : 1))
                     
                     Text("▶").font(.system(size: 50))
-                        .offset(x: isClicked ? 0 : 20, y: 0)
-                        .foregroundStyle(.blue.gradient)
+                        .offset(x: isClicked ? 0 : 30, y: 0)
+                        .foregroundStyle(.blue)
                     
                     Text("▶").font(.system(size: 50))
-                        .scaleEffect(isClicked ? 1 : 0)
-                        .offset(x: isClicked ? 20 : 40, y: 0)
-                        
+                        .scaleEffect(isClicked ? 1 : 0.3)
+                        .offset(x: isClicked ? 30 : 50, y: 0)
                         .foregroundStyle(.blue.opacity( isClicked ? 1 : 0))
                 }
 
